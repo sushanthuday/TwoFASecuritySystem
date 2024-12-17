@@ -1,0 +1,16 @@
+version: '3.5'
+services:
+  spring-boot-2-factor-auth:
+    image: springio/spring-boot-2-factor-auth
+    ports:
+      - '8080:8080'
+  react-2fa-frontend:
+    image: react-2fa-frontend
+    volumes:
+      - './react-2fa-frontend:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
